@@ -1,3 +1,23 @@
+# Create a window and slide it, updating counts according to first and next symbols
+def FasterSymbolMap(Genome, symbol):
+    mapping = {}
+
+    # 1.Extend the genome to account for circularity
+    ExtendedGenome = Genome + Genome[:len(Genome)//2]
+    # 2.Create first window count
+    len_window = len(Genome)//2
+    mapping[0] = PatternCount(ExtendedGenome[:len_window], symbol)
+    # 3.Slide and update last and next symbols
+    for i in range(1, len(Genome)):
+        count = mapping[i-1]
+        if ExtendedGenome[i-1] == symbol:
+            count -= 1
+        if ExtendedGenome[i+len_window-1] == symbol:
+            count += 1
+        mapping[i] = count
+
+    return mapping
+
 def SymbolMap(Genome, symbol):
     mapping = {}
     n = len(Genome)
