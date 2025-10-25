@@ -1,10 +1,10 @@
-def SymbolArray(Genome, symbol):
-    array = {}
+def SymbolMap(Genome, symbol):
+    mapping = {}
     n = len(Genome)
     ExtendedGenome = Genome + Genome[0:n//2]
     for i in range(n):
-        array[i] = PatternCount(ExtendedGenome[i:i+(n//2)], symbol)
-    return array
+        mapping[i] = PatternCount(ExtendedGenome[i:i+(n//2)], symbol)
+    return mapping
 
 def PatternCount(Text, Pattern):
     count = 0
