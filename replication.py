@@ -1,3 +1,13 @@
+def MinimumSkew(Genome):
+    positions = [] # output variable
+    skew = SkewArray(Genome)
+    minimum = min(skew)
+    for i in range(len(skew)):
+        if skew[i] == minimum:
+            positions.append(i)
+    return positions
+
+
 # Input:  A String Genome
 # Output: The skew array of Genome as a list.
 def SkewArray(Genome):
