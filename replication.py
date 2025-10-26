@@ -1,4 +1,4 @@
-def ApproximatePatternCount(Pattern, Text, d):
+def ApproximatePatternCount(Text, Pattern, d):
     count = len(ApproximatePatternMatching(Text,Pattern,d))
     return count
 
@@ -90,7 +90,7 @@ def FrequentWords(Text, k):
         if freq[key] == m:
             words.append(key)
     return words
-# Copy your FrequencyMap() function here.
+
 def FrequencyMap(Text, k):
     freq = {}
     n = len(Text)
