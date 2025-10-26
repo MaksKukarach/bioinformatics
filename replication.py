@@ -1,3 +1,7 @@
+def ApproximatePatternCount(Pattern, Text, d):
+    count = len(ApproximatePatternMatching(Text,Pattern,d))
+    return count
+
 # Input:  Strings Pattern and Text along with an integer d
 # Output: A list containing all starting positions where Pattern appears
 # as a substring of Text with at most d mismatches
