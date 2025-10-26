@@ -1,3 +1,17 @@
+# Input:  A String Genome
+# Output: The skew array of Genome as a list.
+def SkewArray(Genome):
+    skew = [0]
+    for i in range(len(Genome)):
+        if Genome[i] == "C":
+            skew.append(skew[i] - 1)
+        elif Genome[i] == "G":
+            skew.append(skew[i] + 1)
+        else:
+            skew.append(skew[i])
+    return skew
+
+
 # Create a window and slide it, updating counts according to first and next symbols
 def FasterSymbolMap(Genome, symbol):
     mapping = {}
@@ -77,16 +91,3 @@ def Complement(Pattern):
         if letter in complements.keys():
             complement += complements[letter]
     return complement
-
-# Input:  A String Genome
-# Output: The skew array of Genome as a list.
-def SkewArray(Genome):
-    skew = [0]
-    for i in range(len(Genome)):
-        if Genome[i] == "C":
-            skew.append(skew[i] - 1)
-        elif Genome[i] == "G":
-            skew.append(skew[i] + 1)
-        else:
-            skew.append(skew[i])
-    return skew
