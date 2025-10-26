@@ -1,3 +1,10 @@
+def HammingDistance(p, q):
+    mismatches = 0
+    for i in range(len(p)):
+        if p[i] != q[i]:
+            mismatches += 1
+    return mismatches
+
 def MinimumSkew(Genome):
     positions = [] # output variable
     skew = SkewArray(Genome)
