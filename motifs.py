@@ -15,5 +15,11 @@ def Count(Motifs):
             count[nucleotide][j] += 1
     return count
 
-motifs = ['TATA', 'TATC', 'GATA', 'TTTA', 'TAAA']
-print(Count(motifs))
+def Profile(Motifs):
+    n = len(Motifs)
+    k = len(Motifs[0])
+    counts = Count(Motifs)
+    for lst in counts.values():
+        for i in range(k):
+            lst[i] /= n
+    return counts
