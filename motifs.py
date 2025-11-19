@@ -14,7 +14,7 @@ Example:
     {'A': [2, 0], 'C': [0, 1], 'G': [1, 0], 'T': [0, 2]}
 
 """
-def Count(Motifs):
+def Count(Motifs: list[str]):
     # Find rows (n) and colums (k)
     n = len(Motifs)
     k = len(Motifs[0])
@@ -42,7 +42,7 @@ Example:
     >>> Profile(["AT", "AC", "GT"])
     {'A': [0.67, 0.0], 'C': [0.0, 0.33], 'G': [0.33, 0.0], 'T': [0.0, 0.67]}
 """
-def Profile(Motifs):
+def Profile(Motifs: list[str]):
     n = len(Motifs)
     k = len(Motifs[0])
     counts = Count(Motifs)
