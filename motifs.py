@@ -80,3 +80,14 @@ def Consensus(Motifs: list[str]):
                 mostFrequentSymbol = symbol
         consensus += mostFrequentSymbol
     return consensus
+
+def Score(Motifs: list[str]) -> int:
+    consensus = Consensus(Motifs)
+    count = Count(Motifs)
+    k = len(Motifs[0])
+    score = 0
+    for i in range(k):
+        for symbol in 'ACGT':
+            if symbol != consensus[i]:
+                score += count[symbol][i]
+    return score
