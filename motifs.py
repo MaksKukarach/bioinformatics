@@ -98,3 +98,15 @@ def Probability(Sequence, Profile):
         symbol = Sequence[i]
         probability *= Profile[symbol][i]
     return probability
+
+def ProfileMostProbableKmer(text, k, profile):
+    most_probable = ""
+    highest_probability = -1
+    for i in range(0, len(text) - k + 1):
+        sequence = text[i:i+k]
+        probability = Probability(sequence, profile)
+        if probability > highest_probability:
+            highest_probability = probability
+            most_probable = sequence
+    return most_probable
+    
