@@ -91,3 +91,10 @@ def Score(Motifs: list[str]) -> int:
             if symbol != consensus[i]:
                 score += count[symbol][i]
     return score
+
+def Probability(Sequence, Profile):
+    probability = 1
+    for i in range(len(Sequence)):
+        symbol = Sequence[i]
+        probability *= Profile[symbol][i]
+    return probability
