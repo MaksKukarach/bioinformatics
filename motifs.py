@@ -109,4 +109,26 @@ def ProfileMostProbableKmer(text, k, profile):
             highest_probability = probability
             most_probable = sequence
     return most_probable
-    
+
+def GreedyMotifSearch(DNAs, k, t):
+    BestMotifs = []
+    # Initial best guess
+    for i in range(t):
+        BestMotifs.append(DNAs[i][0:k])
+    BestScore = Score(BestMotifs)
+    for i in range(len(DNAs[0]) - k + 1):
+        # Take a k-mer in DNAs[0]
+        Motifs = [DNAs[0][i:i+k]]
+        # For each next DNA string, find a k-mer that is 
+        # Profile-most probable for our current profile matrix.
+        for j in range(1, t):
+            ProfileMatrix = Profile(Motifs)
+            kmer = ProfileMostProbableKmer(DNAs[j], k, ProfileMatrix)
+            Motifs.append(kmer)
+        # After we picked our list of best k-mers, calculate its score
+        # and compare to the current BestMotifs
+        NewScore = Score(Motifs)
+        if NewScore < BestScore: # Important: the lower the score, the better!
+            BestScore = NewScore
+            BestMotifs = Motifs
+    return BestMotifs
