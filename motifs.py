@@ -39,7 +39,7 @@ Args:
 
 Returns:
     dict: mapping each nucleotide ('A','C','G','T') to a list of floats giving the frequency
-    of that nucleotide in each column, rounded to 2 digits.
+    of that nucleotide in each column.
 Example:
     >>> Profile(["AT", "AC", "GT"])
     {'A': [0.67, 0.0], 'C': [0.0, 0.33], 'G': [0.33, 0.0], 'T': [0.0, 0.67]}
@@ -51,7 +51,6 @@ def Profile(Motifs: list[str]):
     for lst in counts.values():
         for i in range(k):
             lst[i] /= n
-            lst[i] = round(lst[i], 2)
     return counts
 
 """
