@@ -44,7 +44,9 @@ Example:
     >>> Profile(["AT", "AC", "GT"])
     {'A': [0.67, 0.0], 'C': [0.0, 0.33], 'G': [0.33, 0.0], 'T': [0.0, 0.67]}
 """
-def Profile(Motifs: list[str]):
+def Profile(Motifs: list[str], pseudocounts=False):
+    if pseudocounts:
+        return ProfileWithPseudocounts(Motifs)
     n = len(Motifs)
     k = len(Motifs[0])
     counts = Count(Motifs)
@@ -109,7 +111,7 @@ def ProfileMostProbableKmer(text, k, profile):
             most_probable = sequence
     return most_probable
 
-def GreedyMotifSearch(DNAs, k, t):
+def GreedyMotifSearch(DNAs, k, t, pseudocounts=False):
     BestMotifs = []
     # Initial best guess
     for i in range(t):
@@ -121,7 +123,7 @@ def GreedyMotifSearch(DNAs, k, t):
         # For each next DNA string, find a k-mer that is 
         # Profile-most probable for our current profile matrix.
         for j in range(1, t):
-            ProfileMatrix = Profile(Motifs)
+            ProfileMatrix = Profile(Motifs, pseudocounts)
             kmer = ProfileMostProbableKmer(DNAs[j], k, ProfileMatrix)
             Motifs.append(kmer)
         # After we picked our list of best k-mers, calculate its score
@@ -147,3 +149,6 @@ def ProfileWithPseudocounts(Motifs):
         for i in range(k):
             lst[i] /= n
     return counts
+
+def GreedyMotifSearchWithPseudocounts(Dna, k, t):
+    return GreedyMotifSearch(Dna, k, t, pseudocounts=True)
