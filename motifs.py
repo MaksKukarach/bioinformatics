@@ -132,3 +132,19 @@ def GreedyMotifSearch(DNAs, k, t):
             BestScore = NewScore
             BestMotifs = Motifs
     return BestMotifs
+
+def CountWithPseudocounts(Motifs):
+    counts = Count(Motifs)
+    for lst in counts.values():
+        for i in range(len(lst)):
+            lst[i] += 1
+    return counts
+
+def ProfileWithPseudocounts(Motifs):
+    k = len(Motifs[0])
+    counts = CountWithPseudocounts(Motifs)
+    n = len(Motifs) + 4 # Note that since we added 1 to each letter, we must add 4 to total!
+    for lst in counts.values():
+        for i in range(k):
+            lst[i] /= n
+    return counts
