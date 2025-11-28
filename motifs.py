@@ -170,3 +170,13 @@ def RandomMotifs(DNAs, k):
         motif = Dna[start:start+k]
         Motifs.append(motif)
     return Motifs
+
+def RandomizedMotifSearch(DNAs, k):
+    best_motifs = RandomMotifs(DNAs, k)
+    while True:
+        profile = ProfileWithPseudocounts(best_motifs)
+        motifs = Motifs(profile, DNAs)
+        if Score(motifs) < Score(best_motifs): # Note: the score should be lower for it to be better
+            best_motifs = motifs
+        else:
+            return best_motifs
