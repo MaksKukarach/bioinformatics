@@ -152,3 +152,11 @@ def ProfileWithPseudocounts(Motifs):
 
 def GreedyMotifSearchWithPseudocounts(Dna, k, t):
     return GreedyMotifSearch(Dna, k, t, pseudocounts=True)
+
+# Get a list with one profile-most probable kmer from each Dna string
+def Motifs(Profile, DNAs):
+    Motifs = []
+    k = len(list(Profile.values())[0])
+    for Dna in DNAs:
+        Motifs.append(ProfileMostProbableKmer(Dna, k, Profile))
+    return Motifs
