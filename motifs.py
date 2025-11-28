@@ -1,3 +1,5 @@
+import random
+
 """
 Count(Motifs: list[str])
 
@@ -159,4 +161,12 @@ def Motifs(Profile, DNAs):
     k = len(list(Profile.values())[0])
     for Dna in DNAs:
         Motifs.append(ProfileMostProbableKmer(Dna, k, Profile))
+    return Motifs
+
+def RandomMotifs(DNAs, k):
+    Motifs = []
+    for Dna in DNAs:
+        start = random.randint(0, len(Dna) - k)
+        motif = Dna[start:start+k]
+        Motifs.append(motif)
     return Motifs
