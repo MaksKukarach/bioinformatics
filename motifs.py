@@ -203,6 +203,8 @@ def DeprecatedWeightedDie(Probabilities):
     return None
 
 # Updated function
+# Key realisation: why in the world do we need to sort the Probabilities? 
+# They form a valid probability scale independently of their order!
 # Assumes the sum of Probabilities is 1
 def WeightedDie(Probabilities):
     p = random.uniform(0, 1)
