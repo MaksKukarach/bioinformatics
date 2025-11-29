@@ -180,3 +180,23 @@ def RandomizedMotifSearch(DNAs, k):
             best_motifs = motifs
         else:
             return best_motifs
+
+# Normalize numbers in a dict so that sum up to 1
+def Normalize(Probabilities: dict[str, float]) -> dict[str, float]:
+    Sum = sum(Probabilities.values())
+    for key in Probabilities:
+        # Divide each number by the sum of all numbers
+        Probabilities[key] /= Sum
+    return Probabilities
+
+# Assumes the sum of Probabilities is 1
+def WeightedDie(Probabilities):
+    target = random.uniform(0, 1)
+    Probabilities = sorted(list(Probabilities.items()), key=lambda pair: pair[1])
+    lower_bound = 0
+    for item, probability in Probabilities:
+        upper_bound = lower_bound + probability
+        if target >= lower_bound and target <= upper_bound:
+            return item
+        lower_bound = upper_bound
+    return None
