@@ -189,8 +189,9 @@ def Normalize(Probabilities: dict[str, float]) -> dict[str, float]:
         Probabilities[key] /= Sum
     return Probabilities
 
+# My original function
 # Assumes the sum of Probabilities is 1
-def WeightedDie(Probabilities):
+def DeprecatedWeightedDie(Probabilities):
     target = random.uniform(0, 1)
     Probabilities = sorted(list(Probabilities.items()), key=lambda pair: pair[1])
     lower_bound = 0
@@ -199,4 +200,15 @@ def WeightedDie(Probabilities):
         if target >= lower_bound and target <= upper_bound:
             return item
         lower_bound = upper_bound
+    return None
+
+# Updated function
+# Assumes the sum of Probabilities is 1
+def WeightedDie(Probabilities):
+    p = random.uniform(0, 1)
+    upperbound = 0
+    for key, prob in Probabilities.items():
+        upperbound += prob
+        if p < upperbound:
+            return key
     return None
