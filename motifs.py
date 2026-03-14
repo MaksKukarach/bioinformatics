@@ -214,3 +214,29 @@ def WeightedDie(Probabilities):
         if p < upperbound:
             return key
     return None
+
+def ProfileGeneratedString(Text, profile, k):
+    n = len(Text)
+    probabilities = {}
+    for i in range(n - k + 1):
+        string = Text[i:i+k]
+        probabilities[string] = Probability(string, profile)
+    probabilities = Normalize(probabilities)
+    string = WeightedDie(probabilities)
+    return string
+
+def GibbsSampler(DNAs: list, k: int, run_times: int):
+    BestMotifs: list = RandomMotifs(DNAs, k)
+    best_score = Score(BestMotifs)
+    dna_count = len(DNAs)
+    for _ in range(run_times):
+        i = random.randint(0, dna_count - 1)
+        popped = BestMotifs.pop(i)
+        profile = ProfileWithPseudocounts(BestMotifs)
+        kmer = ProfileGeneratedString(DNAs[i], profile, k)
+        BestMotifs.insert(i, kmer)
+        # Put the old kmer back if it was a better choice
+        if Score(BestMotifs) < best_score:
+            BestMotifs.pop(i)
+            BestMotifs.insert(i, popped)
+    return BestMotifs
