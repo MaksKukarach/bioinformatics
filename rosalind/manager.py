@@ -4,7 +4,7 @@ def getstr(filename):
         return str
 
 def fasta_to_dna(text):
-    items = text.split('>')
+    items = text.split('>')[1:] # start with 1 because the 0th item is an empty string ''
     dnas = dict()
     for item in items:
         item = item.split('\n')
