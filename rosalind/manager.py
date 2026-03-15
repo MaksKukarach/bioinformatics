@@ -4,6 +4,14 @@ def getstr(filename):
     with open(f'../files/{filename}') as file:
         str = file.read().strip()
         return str
-    
-dnas = getstr('rosalind_hamm.txt').split()
-print(hamming.hammingdistance(dnas[0], dnas[1]))
+
+def fasta_to_dna(text):
+    items = text.split('>')
+    dnas = dict()
+    for item in items:
+        item = item.split('\n')
+        name = item[0]
+        dna = ''.join(item[1:])
+        dnas[name] = dna
+    return dnas
+
