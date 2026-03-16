@@ -14,3 +14,7 @@ import hamming, highest_gc, rna_to_protein, dna
 # protein = rna_to_protein.rna_to_protein(rna)
 # print(protein)
 
+# Motif (substring) positions
+# my_dna, my_motif = manager.getstr('rosalind_subs.txt').split('\n')
+# print(my_dna, my_motif)
+# print(*dna.motif_positions(my_dna, my_motif))
