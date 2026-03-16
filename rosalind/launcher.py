@@ -1,5 +1,5 @@
 import manager
-import hamming, highest_gc, rna_to_protein, dna_to_rna
+import hamming, highest_gc, rna_to_protein, dna
 
 # dnas = manager.getstr('rosalind_hamm.txt').split()
 # print(hamming.hammingdistance(dnas[0], dnas[1]))
@@ -13,3 +13,4 @@ import hamming, highest_gc, rna_to_protein, dna_to_rna
 # rna = manager.getstr('rosalind_prot.txt')
 # protein = rna_to_protein.rna_to_protein(rna)
 # print(protein)
+
