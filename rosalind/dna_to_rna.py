@@ -1,4 +1,3 @@
-with open("../files/rosalind_rna.txt") as file:
-    dna = file.read()
+def dna_to_rna(dna):
     rna = dna.replace("T", "U")
-    print(rna)
+    return rna
