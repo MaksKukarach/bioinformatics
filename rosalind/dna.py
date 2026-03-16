@@ -2,6 +2,13 @@ def dna_to_rna(dna):
     rna = dna.replace("T", "U")
     return rna
 
+def reverse_comp(dna):
+    pairs = {"A": "T", "T": "A", "C": "G", "G": "C"}
+    comp = ""
+    for letter in dna:
+        comp += pairs[letter]
+    return comp[::-1]
+
 def motif_positions(dna: str, motif: str, one_based_indexing=True):
     """
     Return motif positions, using one-based indexing by default.
