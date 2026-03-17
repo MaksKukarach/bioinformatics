@@ -20,3 +20,15 @@ def motif_positions(dna: str, motif: str, one_based_indexing=True):
     if one_based_indexing:
         positions = [i+1 for i in positions]
     return positions
+
+def reverse_palindromes(dna: str, minlen=4, maxlen=12):
+    """Given a DNA string, return the position and length 
+    of every reverse palindrome of length between minlen and maxlen (both included),
+    with one-based indexing."""
+    palindromes = []
+    for n in range(minlen, maxlen+1):
+        for i in range(0, len(dna)-n+1):
+            sub = dna[i:i+n]
+            if reverse_comp(sub) == sub:
+                palindromes.append([i+1, n]) # here comes one-based indexing
+    return sorted(palindromes, key=lambda pair: pair[0])
