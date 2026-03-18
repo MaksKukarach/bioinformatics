@@ -1,5 +1,5 @@
 from manager import getstr, fasta_to_dna
-import hamming, highest_gc, bioinformatics.rosalind.prot as prot, dna, heredity
+import hamming, highest_gc, protein, dna, heredity
 
 # dnas = getstr('rosalind_hamm.txt').split()
 # print(hamming.hammingdistance(dnas[0], dnas[1]))
@@ -29,3 +29,5 @@ import hamming, highest_gc, bioinformatics.rosalind.prot as prot, dna, heredity
 
 # Probability of dominant allele given a sample
 # print(heredity.prob_dominant(26, 25, 17))
+
+# print(round(prot.weight('SKADYEK'), 3))
