@@ -1,5 +1,5 @@
 from manager import getstr, fasta_to_dna
-import hamming, highest_gc, rna_to_protein, dna, heredity
+import hamming, highest_gc, bioinformatics.rosalind.prot as prot, dna, heredity
 
 # dnas = getstr('rosalind_hamm.txt').split()
 # print(hamming.hammingdistance(dnas[0], dnas[1]))
